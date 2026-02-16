@@ -1,6 +1,6 @@
-import { Weight } from '#node_modules/lucide-react/dist/lucide-react';
 import { useRef } from 'react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const FONT_WEIGHTS ={
     subtittle : {min:100 , max :400 , default : 100},
@@ -11,31 +11,73 @@ const renderText =( text , classname , baseweight = 400) =>{
      <span  
      key={i} 
      className={classname} 
-     style={{ fontVariationSettings : `'whgt ${baseweight}`}}>
+   style={{ fontVariationSettings : `'wght' ${baseweight}`}}>
 
         {
-            char === "  " ? "/u00A0" : char
+      char === " " ? "\u00A0" : char
          }
      </span>
 
     ));
 };
+
 const setupTextHover =( container , type )=>{
-    if (!container) return;
-    const lettet = container.querySelectorAll("span");
-    const {min ,max ,default: base} =FONT_WEIGHTS[type];
+  if (!container) return () => {};
+  const letters = container.querySelectorAll("span");
+  const {min ,max ,default: base} =FONT_WEIGHTS[type];
 
-    const animateLetter = ( lettet , Weight , duration = 0,25) => {
-        return gsap.to(lettet , {duration , ease : "power2.out ", fontVariationSettings : `'whgt ${Weight}`,
+  const animateLetter = ( letter , weight , duration = 0.25) => {
+    return gsap.to(letter , {duration , ease : "power2.out", fontVariationSettings : `'wght' ${weight}`,
         });
- };
+  };
 
+  const resetLetters = () => {
+    letters.forEach((letter) => animateLetter(letter , base , 0.3));
+  };
+
+  const handlePointerMove = (e) => {
+    const rect = container.getBoundingClientRect();
+    const isInside = e.clientX >= rect.left
+      && e.clientX <= rect.right
+      && e.clientY >= rect.top
+      && e.clientY <= rect.bottom;
+
+    if (!isInside) {
+      resetLetters();
+      return;
+    }
+
+    const pointerX = e.clientX - rect.left;
+    letters.forEach((letter) => {
+      const {left : l , width : w } = letter.getBoundingClientRect();
+      const distance = Math.abs(pointerX - (l + w / 2));
+      const intensity = Math.exp(-(distance ** 2) /2000);
+
+      animateLetter(letter , min + (max - min) * intensity);
+    });
+  };
+
+  window.addEventListener("pointermove" , handlePointerMove);
+
+  return () => {
+    window.removeEventListener("pointermove" , handlePointerMove);
+  };
 };
 
     const Welcome =()=> {
    const titleRef = useRef(null);
    const subtittleRef = useRef(null);
-
+ 
+   useGSAP(() => {
+    const titleCleanup = setupTextHover(titleRef.current , 'title');
+    const subtitleCleanup = setupTextHover(subtittleRef.current , 'subtittle');
+  
+    return () => {
+      titleCleanup();
+      subtitleCleanup();
+    };
+  
+  }, []); 
     return (
       <section id="welcome">
         <p ref={subtittleRef}>
@@ -46,7 +88,7 @@ const setupTextHover =( container , type )=>{
            )}
          </p>
         <h1 ref={titleRef} className='mt-7'>
-            {renderText ( "Portfolio" , 'text-9xl italic font-gerorman' , 400)}
+          {renderText ( "Portfolio" , 'text-9xl italic font-georama' , 400)}
         </h1>
 
 
@@ -63,4 +105,4 @@ const setupTextHover =( container , type )=>{
     )
 }
 
-export default Welcome
+export default Welcome;

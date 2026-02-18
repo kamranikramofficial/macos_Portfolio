@@ -95,7 +95,7 @@ const setupTextHover =( container , type )=>{
         
         <div className='small-screen'>
           <p>
-            This portfolio is designed for desktop/tablad screen only.
+            This portfolio is designed for desktop/tablet screen only.
           </p>
          
         </div>

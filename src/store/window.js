@@ -20,6 +20,8 @@ const useWindowStore = create(immer((set) => ({
     closeWindow : ( windowkey , data = null) => set((state)=>{
      const win = state.windows[windowkey];
       win.isOpen = false;
+      win.isMinimized = false;
+      win.isMaximized = false;
       win.zIndex = INITIAL_Z_INDEX;
       win.data = null;
     }),
@@ -28,6 +30,21 @@ const useWindowStore = create(immer((set) => ({
       win.zIndex = state.nextZIndex++;
     }),
 
+    minimizeWindow : ( windowkey ) => set((state)=>{
+     const win = state.windows[windowkey];
+      win.isMinimized = true;
+    }),
+
+    restoreWindow : ( windowkey ) => set((state)=>{
+     const win = state.windows[windowkey];
+      win.isMinimized = false;
+      win.zIndex = state.nextZIndex++;
+    }),
+
+    maximizeWindow : ( windowkey ) => set((state)=>{
+     const win = state.windows[windowkey];
+      win.isMaximized = !win.isMaximized;
+    })
 
 })),);
 

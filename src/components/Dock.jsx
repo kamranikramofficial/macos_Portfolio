@@ -7,7 +7,7 @@ import { dockApps } from "#constants";
 import useWindowStore from "/src/store/window.js";
 
 const Dock = () => {
-  const { openWindow, closeWindow, windows } = useWindowStore();
+  const { openWindow, closeWindow, restoreWindow, windows } = useWindowStore();
   const dockRef = useRef(null);
 
   useGSAP(() => {
@@ -62,7 +62,9 @@ const Dock = () => {
     if (!app.canOpen) return;
 
     const window = windows[app.id];
-    if (window.isOpen) {
+    if (window.isOpen && window.isMinimized) {
+      restoreWindow(app.id);
+    } else if (window.isOpen) {
       closeWindow(app.id);
     } else {
       openWindow(app.id);

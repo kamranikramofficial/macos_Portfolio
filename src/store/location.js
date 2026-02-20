@@ -1,4 +1,4 @@
-import { locations } from "#src/constants";
+import { locations } from "#constants";
 import { create } from "zustand";
 import { immer } from  "zustand/middleware/immer";
 
@@ -15,3 +15,5 @@ const useLocationStore = create(immer((set) => ({
         state.activeLocation = DEFAULT_LOCATION;
     })
 })));
+
+export default useLocationStore;

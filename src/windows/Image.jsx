@@ -8,7 +8,7 @@ const Image = () => {
   const data = windows.imgfile.data;
 
   if (!data) return null;
-  const { name, imageUrl, subtitle, description } = data;
+  const { name, imageUrl } = data;
 
   return (
     <>

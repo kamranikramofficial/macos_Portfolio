@@ -48,7 +48,7 @@ body {
     }
 
     ul {
-      @apply flex items-center gap-5 max-sm:hidden;
+      @apply flex items-center gap-5 max-sm:gap-3 max-sm:flex-wrap max-sm:justify-center;
 
       p {
         @apply text-sm cursor-pointer hover:underline transition-all;
@@ -67,7 +67,7 @@ body {
   }
 
   #welcome {
-    @apply text-gray-200 flex flex-col justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none max-sm:h-screen max-sm:w-full max-sm:px-10;
+    @apply text-gray-200 flex flex-col justify-center items-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 select-none max-sm:h-screen max-sm:w-full max-sm:px-5;
 
     .small-screen {
       @apply sm:hidden m-7 bg-red-300/20 backdrop-blur-lg p-3 rounded-md absolute top-10;
@@ -79,7 +79,7 @@ body {
   }
 
   #dock {
-    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none max-sm:hidden;
+    @apply absolute bottom-5 left-1/2 -translate-x-1/2 z-50 select-none max-sm:bottom-2;
 
     .dock-container {
       @apply bg-white/20 backdrop-blur-md justify-between rounded-2xl p-1.5 flex items-end gap-1.5;
@@ -90,7 +90,7 @@ body {
     }
 
     .dock-icon {
-      @apply size-14 3xl:size-20 cursor-pointer;
+      @apply size-14 max-sm:size-10 3xl:size-20 cursor-pointer;
 
       img {
         @apply object-cover object-center;
@@ -119,7 +119,7 @@ body {
   }
 
   #safari {
-    @apply w-2xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-2xl max-w-[95vw] absolute top-40 left-2/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     .search {
       @apply flex items-center gap-3 w-2/3 bg-white border border-gray-300 rounded-lg px-3 py-2;
@@ -163,7 +163,7 @@ body {
   }
 
   #terminal {
-    @apply w-xl absolute top-32 left-1/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl max-w-[95vw] absolute top-32 left-1/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -209,7 +209,7 @@ body {
   }
 
   #contact {
-    @apply max-w-2xl absolute top-60 left-5/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-2xl max-sm:max-w-[95vw] absolute top-60 left-5/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -220,10 +220,10 @@ body {
     }
 
     ul {
-      @apply flex items-center gap-3;
+      @apply flex flex-wrap items-center gap-3;
 
       li {
-        @apply rounded-lg p-3 w-60 hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300;
+        @apply rounded-lg p-3 w-60 max-sm:w-full hover:-translate-y-0.5 hover:scale-105 origin-center transition-all duration-300;
 
         a {
           @apply space-y-5;
@@ -237,10 +237,10 @@ body {
   }
 
   #photos {
-    @apply max-w-3xl absolute top-96 left-1/2 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-3xl max-sm:max-w-[95vw] absolute top-96 left-1/2 max-sm:left-[2.5vw] max-sm:translate-x-0 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     .sidebar {
-      @apply w-3/12 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5;
+      @apply w-3/12 max-sm:w-full max-sm:max-h-32 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5 max-sm:p-3;
 
       h2 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -266,10 +266,10 @@ body {
     }
 
     .gallery {
-      @apply p-5;
+      @apply p-5 overflow-auto;
 
       ul {
-        @apply grid grid-cols-5 grid-rows-5 gap-2.5;
+        @apply grid grid-cols-5 max-sm:grid-cols-2 grid-rows-5 max-sm:grid-rows-none gap-2.5;
 
         li {
           img {
@@ -297,7 +297,7 @@ body {
   }
 
   #resume {
-    @apply w-fit h-fit absolute top-16 left-7/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-fit max-w-[95vw] h-fit absolute top-16 left-7/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     #window-header {
       h2 {
@@ -307,10 +307,10 @@ body {
   }
 
   #finder {
-    @apply absolute w-3xl left-40 top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
+    @apply absolute w-3xl max-w-[95vw] left-40 max-sm:left-[2.5vw] top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
 
     .sidebar {
-      @apply w-48 bg-gray-50 border-r border-gray-200 flex flex-col p-5 space-y-3;
+      @apply w-48 max-sm:w-full max-sm:max-h-28 bg-gray-50 border-r max-sm:border-b border-gray-200 flex flex-col p-5 max-sm:p-3 space-y-3 max-sm:overflow-auto;
 
       h3 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -334,7 +334,7 @@ body {
     }
 
     .content {
-      @apply flex-1 p-8 bg-white max-w-2xl relative;
+      @apply flex-1 p-8 max-sm:p-4 bg-white max-w-2xl relative max-sm:min-h-48;
 
       li {
         @apply absolute flex items-center flex-col gap-3;
@@ -351,7 +351,7 @@ body {
   }
 
   #txtfile {
-    @apply w-md absolute top-36 right-32 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-md max-w-[95vw] absolute top-36 right-32 max-sm:right-auto max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -359,7 +359,7 @@ body {
   }
 
   #imgfile {
-    @apply w-xl absolute top-40 left-2/12 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl max-w-[95vw] absolute top-40 left-2/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
 
     #window-header {
       p {
@@ -377,11 +377,11 @@ body {
   }
 
   #home {
-    @apply relative z-0 max-sm:hidden;
+    @apply relative z-0;
 
     ul {
       li {
-        @apply absolute z-0 select-none flex items-center flex-col;
+        @apply absolute z-0 select-none flex items-center flex-col max-sm:hidden;
 
         img {
           @apply group-hover:bg-gray-950/10 p-1 rounded-md;

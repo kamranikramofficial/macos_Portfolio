@@ -84,12 +84,12 @@ const setupTextHover =( container , type )=>{
         <p ref={subtittleRef}>
             {renderText(
          "Hey, I'm kamran! welcome to my",
-         'text-3xl font-georama', 
+         'text-3xl max-sm:text-lg font-georama', 
          100, 
            )}
          </p>
         <h1 ref={titleRef} className='mt-7'>
-          {renderText ( "Portfolio" , 'text-9xl italic font-georama' , 400)}
+          {renderText ( "Portfolio" , 'text-9xl max-sm:text-5xl italic font-georama' , 400)}
         </h1>
 
 

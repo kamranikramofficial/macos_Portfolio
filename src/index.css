@@ -237,7 +237,7 @@ body {
   }
 
   #photos {
-    @apply max-w-3xl max-sm:max-w-[95vw] absolute top-96 left-1/2 max-sm:left-[2.5vw] max-sm:translate-x-0 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-3xl max-sm:max-w-[95vw] absolute top-96 left-1/2 max-sm:left-[2.5vw] max-sm:translate-x-0 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
     .sidebar {
       @apply w-3/12 max-sm:w-full max-sm:max-h-32 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5 max-sm:p-3;
@@ -266,30 +266,16 @@ body {
     }
 
     .gallery {
-      @apply p-5 overflow-auto;
+      @apply p-5 overflow-auto flex-1 min-h-0;
 
       ul {
-        @apply grid grid-cols-5 max-sm:grid-cols-2 grid-rows-5 max-sm:grid-rows-none gap-2.5;
+        @apply grid grid-cols-4 max-sm:grid-cols-2 gap-2.5;
 
         li {
+          @apply bg-gray-100 rounded-lg p-1 h-30 max-sm:h-24;
+
           img {
-            @apply size-full object-cover rounded-lg;
-          }
-
-          &:first-child {
-            @apply row-start-1 row-span-3 col-start-1 col-span-3;
-          }
-
-          &:nth-child(2) {
-            @apply row-start-1 row-span-3 col-start-4 col-span-2;
-          }
-
-          &:nth-child(3) {
-            @apply row-start-4 row-span-2 col-start-3 col-span-3;
-          }
-
-          &:last-child {
-            @apply row-start-4 row-span-2 col-start-1 col-span-2;
+            @apply w-full h-full max-w-[90%] max-h-[90%] mx-auto my-auto object-contain rounded-lg;
           }
         }
       }
@@ -359,7 +345,7 @@ body {
   }
 
   #imgfile {
-    @apply w-xl max-w-[95vw] absolute top-40 left-2/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl max-w-[95vw] h-[72vh] max-h-[80vh] max-sm:h-[60vh] absolute top-40 left-2/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
     #window-header {
       p {
@@ -368,10 +354,10 @@ body {
     }
 
     .preview {
-      @apply p-2 bg-gray-200 max-h-[70vh];
+      @apply p-2 bg-gray-200 flex-1 overflow-hidden flex items-center justify-center;
 
       img {
-        @apply w-full h-fit object-contain object-center;
+        @apply w-auto h-auto max-w-[72%] max-h-[72%] max-sm:max-w-[78%] max-sm:max-h-[78%] object-contain object-center;
       }
     }
   }

@@ -19,7 +19,7 @@ const Photo = () => {
         </div>
       </div>
 
-      <div className="flex max-sm:flex-col w-full">
+      <div className="flex max-sm:flex-col w-full flex-1 min-h-0">
         <div className="sidebar">
           <h2>photos</h2>
 

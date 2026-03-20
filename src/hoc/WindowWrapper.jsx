@@ -45,17 +45,27 @@ const WindowWrapper = (Component, windowkey) => {
         y: 300,
         duration: 0.35,
         ease: "power3.in",
-        onComplete: () => { el.style.display = "none"; }
+        onComplete: () => { 
+          if (el) el.style.display = "none"; 
+        }
       });
     } else {
+      // Kill all animations and reset inline styles immediately
+      gsap.killTweensOf(el);
       el.style.display = "block";
-      gsap.to(el, {
-        scale: 1,
-        opacity: 1,
-        y: 0,
-        duration: 0.35,
-        ease: "power3.out"
-      });
+      el.style.transform = "";
+      el.style.opacity = "";
+      
+      gsap.fromTo(el, 
+        { scale: 0.4, opacity: 0, y: 300 },
+        {
+          scale: 1,
+          opacity: 1,
+          y: 0,
+          duration: 0.35,
+          ease: "power3.out"
+        }
+      );
     }
   }, [isMinimized, isOpen]);
 
@@ -98,8 +108,15 @@ const WindowWrapper = (Component, windowkey) => {
       el.style.display = isOpen ? "block" : "none";
   }, [isOpen]);
 
+    const galleryMaximizeFix = isMaximized && windowkey === "photos";
+
     return (
-      <section id={windowkey} ref={ref} style={{ zIndex }} className={`absolute ${isMaximized ? "!rounded-none" : ""}`}>
+      <section
+        id={windowkey}
+        ref={ref}
+        style={{ zIndex }}
+        className={`absolute ${isMaximized ? "!rounded-none !max-w-none" : ""} ${galleryMaximizeFix ? "!left-0 !top-10 !translate-x-0 !translate-y-0 !flex !flex-col" : ""}`}
+      >
         <Component {...props} />
       </section>
     );

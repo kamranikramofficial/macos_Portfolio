@@ -11,6 +11,7 @@ const useWindowStore = create(immer((set) => ({
     openWindow : ( windowkey , data = null) => set((state)=>{
       const win = state.windows[windowkey];
       win.isOpen = true;
+      win.isMinimized = false;
       win.zIndex = state.nextZIndex;
       win.data = data ?? win.data;
        state.nextZIndex++;

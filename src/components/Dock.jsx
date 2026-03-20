@@ -3,10 +3,12 @@ import { React, useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-import { dockApps } from "#constants";
+import { dockApps, locations } from "#constants";
+import useLocationStore from "#store/location.js";
 import useWindowStore from "/src/store/window.js";
 
 const Dock = () => {
+  const { setActiveLocation } = useLocationStore();
   const { openWindow, restoreWindow, focusWindow, windows } = useWindowStore();
   const dockRef = useRef(null);
 
@@ -60,6 +62,21 @@ const Dock = () => {
 
   const toggleApp = (app) => {
     if (!app.canOpen) return;
+
+    if (app.id === "trash") {
+      setActiveLocation(locations.trash);
+      const finderWindow = windows.finder;
+
+      if (finderWindow.isOpen && finderWindow.isMinimized) {
+        restoreWindow("finder");
+      } else if (finderWindow.isOpen) {
+        focusWindow("finder");
+      } else {
+        openWindow("finder");
+      }
+
+      return;
+    }
 
     const window = windows[app.id];
     if (window.isOpen && window.isMinimized) {

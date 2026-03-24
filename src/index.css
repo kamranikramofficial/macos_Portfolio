@@ -291,18 +291,33 @@ body {
   }
 
   #resume {
-    @apply w-fit max-w-[95vw] h-fit absolute top-16 left-7/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-fit max-w-[95vw] h-[72vh] max-h-[80vh] absolute top-16 left-7/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
     #window-header {
       h2 {
-        @apply font-bold text-sm text-center flex-1;
+        @apply font-roboto font-semibold text-xs tracking-wide text-center flex-1;
       }
     }
 
     .resume-scroll {
-      @apply bg-gray-100 p-4 flex items-start justify-center overflow-y-scroll overflow-x-hidden;
+      @apply bg-gray-100 p-4 flex-1 min-h-0 items-start justify-center overflow-y-scroll overflow-x-hidden;
       scrollbar-gutter: stable;
       overscroll-behavior: contain;
+      scrollbar-width: thin;
+      scrollbar-color: #9ca3af transparent;
+    }
+
+    .resume-scroll::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .resume-scroll::-webkit-scrollbar-thumb {
+      background: #9ca3af;
+      border-radius: 9999px;
+    }
+
+    .resume-scroll::-webkit-scrollbar-track {
+      background: transparent;
     }
 
     .react-pdf__Document {

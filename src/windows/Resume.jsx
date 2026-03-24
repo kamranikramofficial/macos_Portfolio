@@ -19,7 +19,7 @@ const Resume = () => {
   useEffect(() => {
     const updateWidth = () => {
       const containerWidth = viewerRef.current?.clientWidth ?? 900;
-      const nextWidth = Math.min(1100, Math.max(620, containerWidth - 48));
+      const nextWidth = Math.min(920, Math.max(540, containerWidth - 72));
       setPageWidth(nextWidth);
     };
 

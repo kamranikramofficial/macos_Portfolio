@@ -18,7 +18,7 @@ const Text = () => {
         <h2>{name}</h2>
       </div>
 
-      <div className="p-5 space-y-6 bg-white">
+      <div className="window-body p-5 space-y-6 bg-white">
         {image ? (
           <div className="w-full">
             <img

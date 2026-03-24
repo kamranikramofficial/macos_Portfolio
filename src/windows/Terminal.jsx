@@ -12,6 +12,7 @@ const Terminal = () => {
         <h2>Tech Stack</h2>
       </div>
 
+    <div className="window-body">
     <div className="techstack">
         <p>
            <span className="font-bold">@Kamran %</span>
@@ -46,6 +47,7 @@ const Terminal = () => {
            Render time: 6ms
          </p>
       </div>
+</div>
 </div>
     </>
   );

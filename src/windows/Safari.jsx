@@ -46,6 +46,7 @@ const Safari = () => {
         </div>
       </div>
 
+      <div className="window-body">
       <div className="blog">
          <h2>MY Developer Blog</h2>
 
@@ -64,6 +65,7 @@ const Safari = () => {
              </div>
            ))}
          </div>
+      </div>
       </div>
     </>
   );

@@ -11,7 +11,7 @@ const Contact = () => {
         <h2>Contact Me</h2>
       </div>
 
-      <div className="p-5 space-y-4">
+      <div className="window-body p-5 space-y-4">
        <img src="/images/kamran-1.png" alt="Kamran" className="w-20 rounded-full" />
 
 

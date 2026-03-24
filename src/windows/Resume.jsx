@@ -1,7 +1,7 @@
 import { WindowControls } from "#components";
 import WindowWrapper from "#hoc/WindowWrapper.jsx";
 import { Download } from "lucide-react";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { pdfjs, Page, Document } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
@@ -12,6 +12,34 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 const Resume = () => {
+  const viewerRef = useRef(null);
+  const [pageWidth, setPageWidth] = useState(860);
+  const [numPages, setNumPages] = useState(1);
+
+  useEffect(() => {
+    const updateWidth = () => {
+      const containerWidth = viewerRef.current?.clientWidth ?? 900;
+      const nextWidth = Math.min(1100, Math.max(620, containerWidth - 48));
+      setPageWidth(nextWidth);
+    };
+
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateWidth();
+    });
+
+    if (viewerRef.current) {
+      resizeObserver.observe(viewerRef.current);
+    }
+
+    return () => {
+      window.removeEventListener("resize", updateWidth);
+      resizeObserver.disconnect();
+    };
+  }, []);
+
   return (
     <>
       <div id="window-header">
@@ -28,9 +56,22 @@ const Resume = () => {
         </a>
       </div>
 
-      <Document file="/files/resume.pdf">
-        <Page pageNumber={1} renderTextLayer renderAnnotationLayer />
-      </Document>
+      <div ref={viewerRef} className="window-body resume-scroll">
+        <Document
+          file="/files/resume.pdf"
+          onLoadSuccess={({ numPages: totalPages }) => setNumPages(totalPages)}
+        >
+          {Array.from({ length: numPages }, (_, index) => (
+            <Page
+              key={`resume-page-${index + 1}`}
+              pageNumber={index + 1}
+              width={pageWidth}
+              renderTextLayer
+              renderAnnotationLayer
+            />
+          ))}
+        </Document>
+      </div>
     </>
   );
 };

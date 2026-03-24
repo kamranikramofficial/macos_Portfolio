@@ -7,7 +7,7 @@ import gsap from "gsap";
 
 const WindowWrapper = (Component, windowkey) => {
   const Wrapped = (props) => {
-    const { focusWindow, restoreWindow, windows } = useWindowStore();
+    const { focusWindow, windows } = useWindowStore();
     const { isOpen, isMinimized, isMaximized, zIndex } = windows[windowkey];
     const ref = useRef(null);
     const draggableRef = useRef(null);
@@ -115,7 +115,7 @@ const WindowWrapper = (Component, windowkey) => {
         id={windowkey}
         ref={ref}
         style={{ zIndex }}
-        className={`absolute ${isMaximized ? "!rounded-none !max-w-none" : ""} ${galleryMaximizeFix ? "!left-0 !top-10 !translate-x-0 !translate-y-0 !flex !flex-col" : ""}`}
+        className={`absolute ${isMaximized ? "!rounded-none !max-w-none !overflow-hidden" : ""} ${galleryMaximizeFix ? "!left-0 !top-10 !translate-x-0 !translate-y-0 !flex !flex-col" : ""}`}
       >
         <Component {...props} />
       </section>

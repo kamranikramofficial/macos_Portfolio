@@ -58,12 +58,20 @@ body {
     time {
       @apply text-sm font-medium text-black;
     }
+
+    .nav-right {
+      @apply ml-auto flex items-center gap-2;
+    }
+
+    .system-icons {
+      @apply gap-1;
+    }
   }
 }
 
 @layer components {
   .icon {
-    @apply p-1 hover:bg-gray-200 rounded hover:cursor-default;
+    @apply size-6 flex-center rounded hover:bg-black/10 transition-colors cursor-pointer;
   }
 
   #welcome {
@@ -119,7 +127,7 @@ body {
   }
 
   #safari {
-    @apply w-2xl max-w-[95vw] absolute top-40 left-2/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-2xl max-w-[95vw] h-[72vh] max-h-[80vh] absolute top-40 left-2/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
     .search {
       @apply flex items-center gap-3 w-2/3 bg-white border border-gray-300 rounded-lg px-3 py-2;
@@ -163,7 +171,7 @@ body {
   }
 
   #terminal {
-    @apply w-xl max-w-[95vw] absolute top-32 left-1/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-xl max-w-[95vw] h-[72vh] max-h-[80vh] absolute top-32 left-1/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -209,7 +217,7 @@ body {
   }
 
   #contact {
-    @apply max-w-2xl max-sm:max-w-[95vw] absolute top-60 left-5/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply max-w-2xl h-[72vh] max-h-[80vh] max-sm:max-w-[95vw] absolute top-60 left-5/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -290,10 +298,24 @@ body {
         @apply font-bold text-sm text-center flex-1;
       }
     }
+
+    .resume-scroll {
+      @apply bg-gray-100 p-4 flex items-start justify-center overflow-y-scroll overflow-x-hidden;
+      scrollbar-gutter: stable;
+      overscroll-behavior: contain;
+    }
+
+    .react-pdf__Document {
+      @apply w-full flex flex-col items-center gap-4;
+    }
+
+    .react-pdf__Page {
+      @apply shadow-md;
+    }
   }
 
   #finder {
-    @apply absolute w-3xl max-w-[95vw] left-40 max-sm:left-[2.5vw] top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl;
+    @apply absolute w-3xl h-[72vh] max-h-[80vh] max-w-[95vw] left-40 max-sm:left-[2.5vw] top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl flex flex-col;
 
     .sidebar {
       @apply w-48 max-sm:w-full max-sm:max-h-28 bg-gray-50 border-r max-sm:border-b border-gray-200 flex flex-col p-5 max-sm:p-3 space-y-3 max-sm:overflow-auto;
@@ -320,7 +342,7 @@ body {
     }
 
     .content {
-      @apply flex-1 p-8 max-sm:p-4 bg-white max-w-2xl relative max-sm:min-h-48;
+    @apply flex-1 p-8 max-sm:p-4 bg-white max-w-2xl relative max-sm:min-h-48 overflow-auto;
 
       li {
         @apply absolute flex items-center flex-col gap-3;
@@ -337,7 +359,7 @@ body {
   }
 
   #txtfile {
-    @apply w-md max-w-[95vw] absolute top-36 right-32 max-sm:right-auto max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden;
+    @apply w-md max-w-[95vw] h-[72vh] max-h-[80vh] absolute top-36 right-32 max-sm:right-auto max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
     h2 {
       @apply font-bold text-sm text-center w-full;
@@ -378,5 +400,9 @@ body {
         }
       }
     }
+  }
+
+  .window-body {
+    @apply flex-1 min-h-0 overflow-auto;
   }
 }

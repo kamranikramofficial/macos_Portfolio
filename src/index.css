@@ -391,10 +391,10 @@ body {
     }
 
     .preview {
-      @apply p-2 bg-gray-200 flex-1 overflow-hidden flex items-center justify-center;
+      @apply p-2 bg-gray-200 flex-1 min-h-0 overflow-hidden flex items-center justify-center;
 
       img {
-        @apply w-auto h-auto max-w-[72%] max-h-[72%] max-sm:max-w-[78%] max-sm:max-h-[78%] object-contain object-center;
+        @apply max-w-full max-h-full object-contain object-center;
       }
     }
   }

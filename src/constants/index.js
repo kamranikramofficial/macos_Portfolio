@@ -269,7 +269,7 @@ const WORK_LOCATION = {
           icon: "/images/safari.png",
           kind: "file",
           fileType: "url",
-          href: "https://hackathon2026-tr98.vercel.app/",
+          href: "https://ai-clinic-pro.vercel.app/",
           position: "top-40 right-20",
         },
         {

@@ -291,7 +291,7 @@ body {
   }
 
   #resume {
-    @apply w-fit max-w-[95vw] h-[72vh] max-h-[80vh] absolute top-16 left-7/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
+    @apply w-fit max-w-[1000px] h-[75vh] max-h-[85vh] absolute top-16 left-7/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
     #window-header {
       h2 {
@@ -300,19 +300,19 @@ body {
     }
 
     .resume-scroll {
-      @apply bg-gray-100 p-4 flex-1 min-h-0 items-start justify-center overflow-y-scroll overflow-x-hidden;
+      @apply bg-gray-100 p-3 flex-1 min-h-0 overflow-y-auto overflow-x-hidden flex justify-center;
       scrollbar-gutter: stable;
       overscroll-behavior: contain;
-      scrollbar-width: thin;
-      scrollbar-color: #9ca3af transparent;
+      scrollbar-width: 8px;
+      scrollbar-color: #d1d5db transparent;
     }
 
     .resume-scroll::-webkit-scrollbar {
-      width: 8px;
+      width: 10px;
     }
 
     .resume-scroll::-webkit-scrollbar-thumb {
-      background: #9ca3af;
+      background: #d1d5db;
       border-radius: 9999px;
     }
 

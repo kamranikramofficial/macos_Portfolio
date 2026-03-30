@@ -13,13 +13,13 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 
 const Resume = () => {
   const viewerRef = useRef(null);
-  const [pageWidth, setPageWidth] = useState(450);
+  const [pageWidth, setPageWidth] = useState(700);
   const [numPages, setNumPages] = useState(1);
 
   useEffect(() => {
     const updateWidth = () => {
       const containerWidth = viewerRef.current?.clientWidth ?? 900;
-      const nextWidth = Math.min(860, Math.max(420, containerWidth - 48));
+      const nextWidth = Math.min(900, Math.max(560, containerWidth - 56));
       setPageWidth(nextWidth);
     };
 

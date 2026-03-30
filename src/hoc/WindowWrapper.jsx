@@ -60,6 +60,12 @@ const WindowWrapper = (Component, windowkey) => {
       el.style.display = "block";
       el.style.transform = "";
       el.style.opacity = "";
+
+      // Avoid competing resize/scale animations when window is maximized.
+      // Maximize effect will handle geometry, so only reset visibility here.
+      if (isMaximized) {
+        return;
+      }
       
       gsap.fromTo(el, 
         { scale: 0.4, opacity: 0, y: 300 },
@@ -72,7 +78,7 @@ const WindowWrapper = (Component, windowkey) => {
         }
       );
     }
-  }, [isMinimized, isOpen]);
+  }, [isMinimized, isOpen, isMaximized]);
 
   // Handle maximize / restore toggle
   useLayoutEffect(() => {

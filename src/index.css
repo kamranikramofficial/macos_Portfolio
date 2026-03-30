@@ -360,7 +360,7 @@ body {
   }
 
   #resume {
-    @apply w-fit max-w-[1000px] h-[75vh] max-h-[85vh] absolute top-16 left-7/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
+    @apply w-[920px] max-w-[96vw] h-[82vh] max-h-[90vh] absolute top-12 left-1/2 -translate-x-1/2 max-sm:left-[2vw] max-sm:translate-x-0 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
     #window-header {
       h2 {

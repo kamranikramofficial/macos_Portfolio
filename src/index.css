@@ -140,12 +140,20 @@ body {
     .blog {
       @apply bg-white p-10 max-w-3xl mx-auto;
 
+      .toolbar-status {
+        @apply text-xs text-gray-500 mb-4;
+      }
+
       h2 {
         @apply text-xl font-bold text-pink-600 mb-10;
       }
 
       .blog-post {
-        @apply grid grid-cols-12 space-x-5;
+        @apply grid grid-cols-12 space-x-5 rounded-lg p-2 -mx-2 cursor-pointer transition-colors;
+
+        &.blog-post-active {
+          @apply bg-blue-50;
+        }
 
         img {
           @apply size-full rounded-md object-cover;
@@ -167,6 +175,26 @@ body {
           }
         }
       }
+
+      &.blog-compact {
+        .blog-post {
+          @apply py-1;
+
+          img {
+            @apply h-16 w-16;
+          }
+
+          .content {
+            h3 {
+              @apply text-sm;
+            }
+          }
+        }
+      }
+    }
+
+    button:disabled {
+      @apply opacity-40 cursor-not-allowed;
     }
   }
 
@@ -248,7 +276,7 @@ body {
     @apply w-[740px] max-w-[95vw] min-w-[620px] max-sm:min-w-0 absolute top-96 left-1/2 max-sm:left-[2.5vw] max-sm:translate-x-0 -translate-y-1/2 bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
     .sidebar {
-      @apply w-48 max-sm:w-full max-sm:max-h-32 flex-none bg-gray-50 border-r border-gray-200 flex flex-col p-5 max-sm:p-3;
+      @apply w-48 max-sm:w-full max-sm:max-h-32 flex-none bg-gray-50 flex flex-col p-5 max-sm:p-3;
 
       h2 {
         @apply text-xs font-medium text-gray-400 mb-1;

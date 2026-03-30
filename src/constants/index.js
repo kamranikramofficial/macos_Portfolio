@@ -184,18 +184,22 @@ const photosLinks = [
 const gallery = [
   {
     id: 1,
+    name: "Team Meetup",
     img: "/images/gal1.jpg",
   },
   {
     id: 2,
+    name: "Staircase Portrait",
     img: "/images/gal2.jpg",
   },
   {
     id: 3,
+    name: "Coffee Break",
     img: "/images/gal3.jpg",
   },
   {
     id: 4,
+    name: "Dev Setup",
     img: "/images/gal4.jpg",
   },
 ];

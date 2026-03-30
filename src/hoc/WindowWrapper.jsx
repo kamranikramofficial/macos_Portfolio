@@ -82,7 +82,9 @@ const WindowWrapper = (Component, windowkey) => {
         top: 40,
         left: 0,
         width: "100vw",
-        height: "calc(100vh - 120px)",
+        height: "calc(100vh - 149px)",
+        xPercent: 0,
+        yPercent: 0,
         x: 0,
         y: 0,
         duration: 0.35,
@@ -96,6 +98,10 @@ const WindowWrapper = (Component, windowkey) => {
         left: "",
         width: "",
         height: "",
+        xPercent: "",
+        yPercent: "",
+        x: "",
+        y: "",
         duration: 0.35,
         ease: "power3.out"
       });
@@ -108,14 +114,12 @@ const WindowWrapper = (Component, windowkey) => {
       el.style.display = isOpen ? "block" : "none";
   }, [isOpen]);
 
-    const galleryMaximizeFix = isMaximized && windowkey === "photos";
-
     return (
       <section
         id={windowkey}
         ref={ref}
         style={{ zIndex }}
-        className={`absolute ${isMaximized ? "!rounded-none !max-w-none !overflow-hidden" : ""} ${galleryMaximizeFix ? "!left-0 !top-10 !translate-x-0 !translate-y-0 !flex !flex-col" : ""}`}
+        className={`absolute ${isMaximized ? "!rounded-none !max-w-none !overflow-hidden" : ""}`}
       >
         <Component {...props} />
       </section>

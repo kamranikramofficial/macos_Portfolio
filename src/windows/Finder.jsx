@@ -20,17 +20,13 @@ const Finder = () => {
 
   const matchesQuery = (value) => `${value ?? ""}`.toLowerCase().includes(normalizedQuery);
 
-  const sidebarMatches = useMemo(() => {
-    if (!normalizedQuery) return [];
-
-    return [...favoriteLocations, ...workFolders].filter((item) => {
-      return matchesQuery(item.name) || matchesQuery(item.type);
-    });
-  }, [favoriteLocations, workFolders, normalizedQuery]);
-
   const visibleItems = useMemo(() => {
     const folderItems = activeLocation?.children ?? [];
     if (!normalizedQuery) return folderItems;
+
+    const isLocationMatch =
+      matchesQuery(activeLocation?.name) || matchesQuery(activeLocation?.type);
+    if (isLocationMatch) return folderItems;
 
     return folderItems.filter((item) => {
       const descriptionText = Array.isArray(item.description)
@@ -54,14 +50,20 @@ const Finder = () => {
     }
   }, [isMinimized, isOpen]);
 
-  useEffect(() => {
-    if (!normalizedQuery || !sidebarMatches.length) return;
+  const handleSearchChange = (value) => {
+    setSearchQuery(value);
 
-    const firstMatch = sidebarMatches[0];
-    if (activeLocation?.name !== firstMatch.name) {
+    const query = value.trim().toLowerCase();
+    if (!query) return;
+
+    const firstMatch = [...favoriteLocations, ...workFolders].find((item) => {
+      return `${item.name ?? ""} ${item.type ?? ""}`.toLowerCase().includes(query);
+    });
+
+    if (firstMatch && activeLocation?.name !== firstMatch.name) {
       setActiveLocation(firstMatch);
     }
-  }, [normalizedQuery, sidebarMatches, activeLocation, setActiveLocation]);
+  };
 
   const openItem = (item) => {
     if (item.fileType === "pdf") return openWindow("resume");
@@ -82,7 +84,6 @@ const Finder = () => {
             onClick={() => setActiveLocation(item)}
             className={clsx(
               item.id === activeLocation.id ? "active" : "not-active",
-              normalizedQuery && matchesQuery(item.name) && "ring-1 ring-amber-300 bg-amber-50",
             )}
           >
             <img src={item.icon} className="w-4" alt={item.name} />
@@ -102,7 +103,7 @@ const Finder = () => {
               ref={searchInputRef}
               type="text"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="Search files and sidebar"
               className="h-8 w-44 rounded-md border border-gray-300 bg-white px-2 text-xs text-gray-700 outline-none focus:border-blue-400"
             />

@@ -176,21 +176,21 @@ const Safari = () => {
         </div>
       </div>
 
-      <div className="window-body">
+      <div className="window-body safari-scroll" style={{ height: "calc(100% - 57px)" }}>
       <div className={`blog ${compactMode ? "blog-compact" : ""}`}>
          <h2>MY Developer Blog</h2>
 
          {status && <p className="toolbar-status">{status}</p>}
 
-         <div className="space-y-8">
-           {visiblePosts.map(({id , image , title , date , link }) => (
+         <div className="space-y-8 pb-16">
+           {visiblePosts.map(({ id, image, icon, title, date, link }) => (
              <div
                key={id}
                className={`blog-post ${selectedPostId === id ? "blog-post-active" : ""}`}
                onClick={() => setSelectedPostId(id)}
              >
               <div className="col-span-2">
-               <img src={image} alt={title} />
+               <img src={icon ?? image ?? "/images/blog1.png"} alt={title} />
               </div>
 
               <div className="content">

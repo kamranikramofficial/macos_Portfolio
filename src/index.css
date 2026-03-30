@@ -129,6 +129,12 @@ body {
   #safari {
     @apply w-2xl max-w-[95vw] h-[72vh] max-h-[80vh] absolute top-40 left-2/12 max-sm:left-[2.5vw] bg-white shadow-2xl drop-shadow-2xl rounded-xl overflow-hidden flex flex-col;
 
+    .safari-scroll {
+      @apply flex-1 min-h-0 overflow-y-auto overflow-x-hidden;
+      scrollbar-gutter: stable;
+      overscroll-behavior: contain;
+    }
+
     .search {
       @apply flex items-center gap-3 w-2/3 bg-white border border-gray-300 rounded-lg px-3 py-2;
 
@@ -156,7 +162,7 @@ body {
         }
 
         img {
-          @apply size-full rounded-md object-cover;
+          @apply w-16 h-16 rounded-md object-contain;
         }
 
         .content {

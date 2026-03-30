@@ -122,28 +122,31 @@ const Finder = () => {
         </div>
       </div>
 
-      <div className="bg-white flex flex-1 min-h-0">
+      <div className="bg-white flex min-h-0" style={{ height: "calc(100% - 57px)" }}>
         <div className="sidebar">
           {renderList("Favorites", favoriteLocations)}
           {renderList("Work", workFolders)}
         </div>
-        <ul className="content">
-          {visibleItems.map((item) => (
-            <li
-              key={item.id}
-              className={item.position}
-              onClick={() => openItem(item)}
-            >
-              <img src={item.icon} alt={item.name} />
-              <p>{item.name}</p>
-            </li>
-          ))}
-          {searchQuery.trim() && visibleItems.length === 0 && (
-            <li className="top-10 left-8 !flex-row gap-2 text-sm text-gray-500">
-              <p>No matching file found.</p>
-            </li>
+        <div className={clsx("content", visibleItems.length === 0 && "content-no-scroll") }>
+          {visibleItems.length > 0 ? (
+            <ul className="content-canvas">
+              {visibleItems.map((item) => (
+                <li
+                  key={item.id}
+                  className="finder-item"
+                  onClick={() => openItem(item)}
+                >
+                  <img src={item.icon} alt={item.name} />
+                  <p>{item.name}</p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className="content-empty-state">
+              <p>{searchQuery.trim() ? "No matching file found." : "No items in this folder."}</p>
+            </div>
           )}
-        </ul>
+        </div>
       </div>
     </>
   );

@@ -27,7 +27,12 @@ const WindowWrapper = (Component, windowkey) => {
     const el = ref.current;
     if (!el) return;
 
-    const [intence]= Draggable.create(el,{onPress:()=> focusWindow(windowkey)});
+    const headerEl = el.querySelector("#window-header") || el;
+
+    const [intence]= Draggable.create(el,{
+      trigger: headerEl,
+      onPress:()=> focusWindow(windowkey)
+    });
     draggableRef.current = intence;
 
     return () => intence.kill();

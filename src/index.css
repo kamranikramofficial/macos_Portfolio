@@ -402,7 +402,10 @@ body {
     @apply absolute w-3xl h-[72vh] max-h-[80vh] max-w-[95vw] left-40 max-sm:left-[2.5vw] top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl flex flex-col;
 
     .sidebar {
-      @apply w-48 max-sm:w-full max-sm:max-h-28 bg-gray-50 border-r max-sm:border-b border-gray-200 flex flex-col p-5 max-sm:p-3 space-y-3 overflow-y-auto overflow-x-hidden;
+      @apply w-48 max-sm:w-full max-sm:max-h-28 flex-none h-full max-h-full bg-gray-50 border-r max-sm:border-b border-gray-200 flex flex-col p-5 pb-8 max-sm:p-3 space-y-3 overflow-y-auto overflow-x-hidden;
+      touch-action: pan-y !important;
+      scrollbar-gutter: stable;
+      overscroll-behavior: contain;
 
       scrollbar-width: thin;
       scrollbar-color: #d1d5db transparent;
@@ -425,7 +428,7 @@ body {
       }
 
       ul {
-        @apply space-y-1;
+        @apply space-y-1 pb-4;
 
         .active {
           @apply bg-blue-100 text-blue-700;
@@ -442,17 +445,33 @@ body {
     }
 
     .content {
-    @apply flex-1 p-8 max-sm:p-4 bg-white max-w-2xl relative max-sm:min-h-48 overflow-auto;
+    @apply flex-1 w-full p-8 pb-12 max-sm:p-4 bg-white max-sm:min-h-48 min-h-0 overflow-y-auto overflow-x-hidden;
+      touch-action: pan-y !important;
 
-      li {
-        @apply absolute flex items-center flex-col gap-3;
+      &.content-no-scroll {
+        @apply overflow-y-hidden;
+      }
+
+      .content-empty-state {
+        @apply h-full w-full flex items-center justify-center text-sm text-gray-500;
+      }
+
+      .content-canvas {
+        @apply w-full grid grid-cols-4 max-sm:grid-cols-2 gap-6 content-start;
+        min-height: 100%;
+      }
+
+      .content-canvas li {
+        @apply flex items-center flex-col gap-3 p-2 rounded-lg cursor-pointer hover:bg-gray-100/70 transition-colors;
 
         img {
           @apply object-contain object-center size-16 relative group-hover:scale-105;
         }
 
         p {
-          @apply text-sm text-center font-medium w-40;
+          @apply text-sm text-center font-medium w-28 max-w-full leading-snug whitespace-normal break-words;
+          overflow-wrap: anywhere;
+          word-break: break-all;
         }
       }
     }

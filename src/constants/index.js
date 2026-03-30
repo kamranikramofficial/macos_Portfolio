@@ -333,7 +333,7 @@ const WORK_LOCATION = {
           kind: "file",
           fileType: "fig",
           href: "https://google.com",
-          position: "top-70 right-20",
+          position: "top-110 right-20",
         },
       ],
     },

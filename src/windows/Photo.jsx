@@ -9,18 +9,22 @@ import useWindowStore from "#store/window.js";
 const Photo = () => {
   const { openWindow, windows } = useWindowStore();
   const { isMinimized, isOpen } = windows.photos;
-  const [activeTab, setActiveTab] = useState("Library");
+  const [activeTab, setActiveTab] = useState("All");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef(null);
 
   const visibleGallery = useMemo(() => {
-    if (activeTab === "Library") return gallery;
-    if (activeTab === "Memories") return gallery.slice(0, 2);
-    if (activeTab === "Places") return gallery.slice(1, 4);
-    if (activeTab === "People") return gallery.slice(0, 3);
-    if (activeTab === "Favorites") return [gallery[0], gallery[3]].filter(Boolean);
-    return gallery;
+    const galleryByTab = {
+      All: gallery,
+      Library: gallery,
+      Memories: gallery.slice(0, 2),
+      Places: gallery.slice(1, 4),
+      People: gallery.slice(0, 3),
+      Favorites: [gallery[0], gallery[3]].filter(Boolean),
+    };
+
+    return galleryByTab[activeTab] ?? gallery;
   }, [activeTab]);
 
   const filteredGallery = useMemo(() => {

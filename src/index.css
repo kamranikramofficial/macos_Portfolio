@@ -307,6 +307,21 @@ body {
 
     .gallery {
       @apply p-5 overflow-auto flex-1 min-h-0 min-w-0;
+      scrollbar-gutter: stable;
+      overscroll-behavior: contain;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #d1d5db;
+        border-radius: 9999px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
 
       h3 {
         @apply text-sm font-semibold text-gray-600 mb-3;
@@ -381,7 +396,23 @@ body {
     @apply absolute w-3xl h-[72vh] max-h-[80vh] max-w-[95vw] left-40 max-sm:left-[2.5vw] top-20 shadow-2xl drop-shadow-2xl overflow-hidden rounded-xl flex flex-col;
 
     .sidebar {
-      @apply w-48 max-sm:w-full max-sm:max-h-28 bg-gray-50 border-r max-sm:border-b border-gray-200 flex flex-col p-5 max-sm:p-3 space-y-3 max-sm:overflow-auto;
+      @apply w-48 max-sm:w-full max-sm:max-h-28 bg-gray-50 border-r max-sm:border-b border-gray-200 flex flex-col p-5 max-sm:p-3 space-y-3 overflow-y-auto overflow-x-hidden;
+
+      scrollbar-width: thin;
+      scrollbar-color: #d1d5db transparent;
+
+      &::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #d1d5db;
+        border-radius: 9999px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
 
       h3 {
         @apply text-xs font-medium text-gray-400 mb-1;
@@ -466,6 +497,21 @@ body {
   }
 
   .window-body {
-    @apply flex-1 min-h-0 overflow-auto;
+    @apply flex-1 min-h-0 overflow-y-auto overflow-x-hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db transparent;
+  }
+
+  .window-body::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .window-body::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 9999px;
+  }
+
+  .window-body::-webkit-scrollbar-track {
+    background: transparent;
   }
 }

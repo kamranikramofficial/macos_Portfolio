@@ -19,7 +19,7 @@ const Resume = () => {
   useEffect(() => {
     const updateWidth = () => {
       const containerWidth = viewerRef.current?.clientWidth ?? 900;
-      const nextWidth = Math.min(500, Math.max(400, containerWidth - 40));
+      const nextWidth = Math.min(860, Math.max(420, containerWidth - 48));
       setPageWidth(nextWidth);
     };
 
@@ -56,7 +56,11 @@ const Resume = () => {
         </a>
       </div>
 
-      <div ref={viewerRef} className="window-body resume-scroll">
+      <div
+        ref={viewerRef}
+        className="window-body resume-scroll"
+        style={{ height: "calc(100% - 57px)" }}
+      >
         <Document
           file="/files/resume.pdf"
           onLoadSuccess={({ numPages: totalPages }) => setNumPages(totalPages)}

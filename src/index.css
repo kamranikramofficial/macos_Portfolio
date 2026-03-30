@@ -369,15 +369,17 @@ body {
     }
 
     .resume-scroll {
-      @apply bg-gray-100 p-3 flex-1 min-h-0 overflow-y-auto overflow-x-hidden flex justify-center;
+      @apply bg-gray-100 px-4 py-5 flex-1 min-h-0 overflow-y-auto overflow-x-hidden flex justify-center;
+      touch-action: pan-y !important;
       scrollbar-gutter: stable;
       overscroll-behavior: contain;
-      scrollbar-width: 8px;
+      scrollbar-width: thin;
       scrollbar-color: #d1d5db transparent;
+      scroll-behavior: smooth;
     }
 
     .resume-scroll::-webkit-scrollbar {
-      width: 10px;
+      width: 8px;
     }
 
     .resume-scroll::-webkit-scrollbar-thumb {
@@ -390,7 +392,7 @@ body {
     }
 
     .react-pdf__Document {
-      @apply w-full flex flex-col items-center gap-4;
+      @apply w-full flex flex-col items-center gap-5;
     }
 
     .react-pdf__Page {

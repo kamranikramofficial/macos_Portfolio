@@ -234,6 +234,31 @@ const gallery = [
     name: "Dev Setup",
     img: "/images/gal4.jpg",
   },
+   {
+    id: 5,
+    name: "OutDoor picture",
+    img: "/images/gal5.jpg",
+  },
+   {
+    id: 6,
+    name: "OutDoor picture with friends",
+    img: "/images/gal6.jpg",
+  },
+   {
+    id: 7,
+    name: "technosedigital",
+    img: "/images/gal7.jpg",
+  },
+     {
+    id: 8,
+    name: "technosedigital meeting",
+    img: "/images/gal8.jpg",
+  },
+    {
+    id: 9,
+    name: "technosedigital office",
+    img: "/images/gal9.jpg",
+  },
 ];
 
 export {
